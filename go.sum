@@ -387,8 +387,6 @@ github.com/opencontainers/selinux v1.5.2 h1:F6DgIsjgBIcDksLW4D5RG9bXok6oqZ3nvMwj
 github.com/opencontainers/selinux v1.5.2/go.mod h1:yTcKuYAh6R95iDpefGLQaPaRwJFwyzAJufJyiTt7s0g=
 github.com/openshift/api v0.0.0-20200722204502-c33fd0aa6ffa h1:Ty11UANoi60q8bnaA/XHornmFFzRDkYHwWE2fQMNzqQ=
 github.com/openshift/api v0.0.0-20200722204502-c33fd0aa6ffa/go.mod h1:IXsT3F4NjLtRzfnQvwU+g/oPWpoNsVV5vd5aaOMO8eU=
-github.com/openshift/apiserver-library-go v0.0.0-20200723181026-dd21ec96ba0a h1:5jNauFKxYwStYVdLRY+Oy+hS/8h1wioW5RYaIWXFpC8=
-github.com/openshift/apiserver-library-go v0.0.0-20200723181026-dd21ec96ba0a/go.mod h1://gQP1LMTExUTcFCgJdKHY23UVHhkaQILXsTdVz0Qok=
 github.com/openshift/build-machinery-go v0.0.0-20200424080330-082bf86082cc/go.mod h1:1CkcsT3aVebzRBzVTSbiKSkJMsC/CASqxesfqEMfJEc=
 github.com/openshift/client-go v0.0.0-20200722173614-5a1b0aaeff15 h1:b2QkHrmaYtY6kzy2VrYLc+KBmCuTpJjgvBahPqpt6V0=
 github.com/openshift/client-go v0.0.0-20200722173614-5a1b0aaeff15/go.mod h1:yd4Zpcdk+8JyMWi6v+h78jPqK0FvXbJY41Wq3SZxl+c=
@@ -476,6 +474,8 @@ github.com/urfave/cli v1.22.1 h1:+mkCCcOFKPnCmVYVcURKps1Xe+3zP90gSYGNfRkjoIY=
 github.com/urfave/cli v1.22.1/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/urfave/negroni v1.0.0 h1:kIimOitoypq34K7TG7DUaJ9kq/N4Ofuwi1sjz0KipXc=
 github.com/urfave/negroni v1.0.0/go.mod h1:Meg73S6kFm/4PpbYdq35yYWoCZ9mS/YSx+lKnmiohz4=
+github.com/vareti/apiserver-library-go v0.0.0-20200902160815-95df6b60ef04 h1:m8Ac7xSiNL0rdcc+/h67CTGhq1rmUSJ9+v+JaZ6lia8=
+github.com/vareti/apiserver-library-go v0.0.0-20200902160815-95df6b60ef04/go.mod h1:+B51GHs/jfZzk93MKrSSA8BWxrulVVcxiBG7kdFpd74=
 github.com/vektah/gqlparser v1.1.2/go.mod h1:1ycwN7Ij5njmMkPPAOaRFY4rET2Enx7IkVv3vaXspKw=
 github.com/vishvananda/netlink v1.1.0 h1:1iyaYNBLmP6L0220aDnYQpo1QEV4t4hJ+xEEhhJH8j0=
 github.com/vishvananda/netlink v1.1.0/go.mod h1:cTgwzPIzzgDAYoQrMm0EdrjRUBkTqKYppBueQtXaqoE=
@@ -599,7 +599,7 @@ k8s.io/kube-aggregator v0.19.0-rc.2 h1:vio1J9d+UHUA/ChBeYgBKVlvzOlG4Jztz1Qw+EIGt
 k8s.io/kube-aggregator v0.19.0-rc.2/go.mod h1:6PWWQhJWKECXUitSZ8Mo6LD9gIu4sPZaPpOEU67NkmM=
 k8s.io/kube-openapi v0.0.0-20200427153329-656914f816f9 h1:5NC2ITmvg8RoxoH0wgmL4zn4VZqXGsKbxrikjaQx6s4=
 k8s.io/kube-openapi v0.0.0-20200427153329-656914f816f9/go.mod h1:bfCVj+qXcEaE5SCvzBaqpOySr6tuCcpPKqF6HD8nyCw=
-k8s.io/kubernetes v1.19.0-rc.2/go.mod h1:zomfQQTZYrQjnakeJi8fHqMNyrDTT6F/MuLaeBHI9Xk=
+k8s.io/kubernetes v1.19.0/go.mod h1:yhT1/ltQajQsha3tnYc9QPFYSumGM45nlZdjf7WqE1A=
 k8s.io/system-validators v1.1.2 h1:0xzEb0PqnDnUOuf/2E/gaJBOBN7j+qf0LIn12jw3oc4=
 k8s.io/system-validators v1.1.2/go.mod h1:bPldcLgkIUK22ALflnsXk8pvkTEndYdNuaHH6gRrl0Q=
 k8s.io/utils v0.0.0-20200720150651-0bdb4ca86cbc h1:GiXZzevctVRRBh56shqcqB9s9ReWMU6GTsFyE2RCFJQ=

@@ -18,7 +18,7 @@ require (
 	github.com/GoogleCloudPlatform/k8s-cloud-provider v0.0.0-20200415212048-7901bc822317
 	github.com/JeffAshton/win_pdh v0.0.0-20161109143554-76bb4ee9f0ab
 	github.com/Microsoft/go-winio v0.4.15-0.20190919025122-fc70bd9a86b5
-	github.com/Microsoft/hcsshim v0.8.9
+	github.com/Microsoft/hcsshim v0.8.10-0.20200715222032-5eafd1556990
 	github.com/PuerkitoBio/purell v1.1.1
 	github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e
 	github.com/aws/aws-sdk-go v1.28.2
@@ -40,7 +40,7 @@ require (
 	github.com/docker/go-units v0.4.0
 	github.com/elazarl/goproxy v0.0.0-20180725130230-947c36da3153
 	github.com/emicklei/go-restful v2.9.5+incompatible
-	github.com/evanphx/json-patch v4.2.0+incompatible
+	github.com/evanphx/json-patch v4.9.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/go-bindata/go-bindata v3.1.2+incompatible
 	github.com/go-openapi/analysis v0.19.5
@@ -73,10 +73,10 @@ require (
 	github.com/opencontainers/go-digest v1.0.0-rc1
 	github.com/opencontainers/runc v1.0.0-rc91.0.20200707015106-819fcc687efb
 	github.com/opencontainers/selinux v1.5.2
-	github.com/openshift/api v0.0.0-20200722204502-c33fd0aa6ffa
+	github.com/openshift/api v0.0.0-20200829102639-8a3a835f1acf
 	github.com/openshift/apiserver-library-go v0.0.0-20200723181026-dd21ec96ba0a
-	github.com/openshift/client-go v0.0.0-20200722173614-5a1b0aaeff15
-	github.com/openshift/library-go v0.0.0-20200722204747-e3f2c82ff290
+	github.com/openshift/client-go v0.0.0-20200827190008-3062137373b5
+	github.com/openshift/library-go v0.0.0-20200831114015-2ab0c61c15de
 	github.com/pkg/errors v0.9.1
 	github.com/pmezard/go-difflib v1.0.0
 	github.com/prometheus/client_golang v1.7.1
@@ -94,13 +94,13 @@ require (
 	github.com/thecodeteam/goscaleio v0.1.0
 	github.com/vishvananda/netlink v1.1.0
 	github.com/vmware/govmomi v0.20.3
-	go.etcd.io/etcd v0.5.0-alpha.5.0.20200716221620-18dfb9cca345
-	golang.org/x/crypto v0.0.0-20200220183623-bac4c82f6975
-	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
+	go.etcd.io/etcd v0.5.0-alpha.5.0.20200819165624-17cef6e3e9d5
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
+	golang.org/x/net v0.0.0-20200707034311-ab3426394381
 	golang.org/x/oauth2 v0.0.0-20191202225959-858c2ad4c8b6
 	golang.org/x/sys v0.0.0-20200622214017-ed371f2e16b4
 	golang.org/x/time v0.0.0-20191024005414-555d28b269f0
-	golang.org/x/tools v0.0.0-20200602230032-c00d67ef29d0
+	golang.org/x/tools v0.0.0-20200616133436-c1934b75d054
 	gonum.org/v1/gonum v0.6.2
 	google.golang.org/api v0.15.1
 	google.golang.org/grpc v1.27.0
@@ -109,24 +109,24 @@ require (
 	gopkg.in/square/go-jose.v2 v2.2.2
 	gopkg.in/warnings.v0 v0.1.1 // indirect
 	gopkg.in/yaml.v2 v2.3.0
-	k8s.io/api v0.19.0-rc.2
+	k8s.io/api v0.19.0
 	k8s.io/apiextensions-apiserver v0.19.0-rc.2
-	k8s.io/apimachinery v0.19.0-rc.2
-	k8s.io/apiserver v0.19.0-rc.2
+	k8s.io/apimachinery v0.19.0
+	k8s.io/apiserver v0.19.0
 	k8s.io/cli-runtime v0.0.0
-	k8s.io/client-go v0.19.0-rc.2
+	k8s.io/client-go v0.19.0
 	k8s.io/cloud-provider v0.0.0
 	k8s.io/cluster-bootstrap v0.0.0
-	k8s.io/code-generator v0.19.0-rc.2
+	k8s.io/code-generator v0.19.0
 	k8s.io/component-base v0.19.0-rc.2
 	k8s.io/cri-api v0.0.0
 	k8s.io/csi-translation-lib v0.0.0
 	k8s.io/gengo v0.0.0-20200428234225-8167cfdcfc14
 	k8s.io/heapster v1.2.0-beta.1
-	k8s.io/klog/v2 v2.2.0
+	k8s.io/klog/v2 v2.3.0
 	k8s.io/kube-aggregator v0.19.0-rc.2
 	k8s.io/kube-controller-manager v0.0.0
-	k8s.io/kube-openapi v0.0.0-20200427153329-656914f816f9
+	k8s.io/kube-openapi v0.0.0-20200805222855-6aeccd4b50c6
 	k8s.io/kube-proxy v0.0.0
 	k8s.io/kube-scheduler v0.0.0
 	k8s.io/kubectl v0.0.0
@@ -135,7 +135,7 @@ require (
 	k8s.io/metrics v0.0.0
 	k8s.io/sample-apiserver v0.0.0
 	k8s.io/system-validators v1.1.2
-	k8s.io/utils v0.0.0-20200720150651-0bdb4ca86cbc
+	k8s.io/utils v0.0.0-20200729134348-d5654de09c73
 	sigs.k8s.io/kustomize v2.0.3+incompatible
 	sigs.k8s.io/yaml v1.2.0
 )
@@ -377,7 +377,7 @@ replace (
 	github.com/opencontainers/runtime-spec => github.com/opencontainers/runtime-spec v1.0.3-0.20200520003142-237cc4f519e2
 	github.com/opencontainers/selinux => github.com/opencontainers/selinux v1.5.2
 	github.com/openshift/api => github.com/openshift/api v0.0.0-20200722204502-c33fd0aa6ffa
-	github.com/openshift/apiserver-library-go => github.com/openshift/apiserver-library-go v0.0.0-20200723181026-dd21ec96ba0a
+	github.com/openshift/apiserver-library-go => github.com/vareti/apiserver-library-go v0.0.0-20200902160815-95df6b60ef04
 	github.com/openshift/build-machinery-go => github.com/openshift/build-machinery-go v0.0.0-20200424080330-082bf86082cc
 	github.com/openshift/client-go => github.com/openshift/client-go v0.0.0-20200722173614-5a1b0aaeff15
 	github.com/openshift/library-go => github.com/openshift/library-go v0.0.0-20200722204747-e3f2c82ff290
