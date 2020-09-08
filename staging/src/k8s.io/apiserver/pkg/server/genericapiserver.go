@@ -19,7 +19,6 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"os"
 	gpath "path"
 	"strings"
 	"sync"
@@ -27,6 +26,13 @@ import (
 
 	systemd "github.com/coreos/go-systemd/daemon"
 	"github.com/go-openapi/spec"
+
+	"k8s.io/klog/v2"
+	openapibuilder "k8s.io/kube-openapi/pkg/builder"
+	openapicommon "k8s.io/kube-openapi/pkg/common"
+	"k8s.io/kube-openapi/pkg/handler"
+	openapiutil "k8s.io/kube-openapi/pkg/util"
+	openapiproto "k8s.io/kube-openapi/pkg/util/proto"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
@@ -47,12 +53,6 @@ import (
 	"k8s.io/apiserver/pkg/server/routes"
 	utilopenapi "k8s.io/apiserver/pkg/util/openapi"
 	restclient "k8s.io/client-go/rest"
-	"k8s.io/klog/v2"
-	openapibuilder "k8s.io/kube-openapi/pkg/builder"
-	openapicommon "k8s.io/kube-openapi/pkg/common"
-	"k8s.io/kube-openapi/pkg/handler"
-	openapiutil "k8s.io/kube-openapi/pkg/util"
-	openapiproto "k8s.io/kube-openapi/pkg/util/proto"
 )
 
 // Info about an API group.
@@ -643,7 +643,6 @@ func getResourceNamesForGroup(apiPrefix string, apiGroupInfo *APIGroupInfo, path
 // if POD_NAME/NAMESPACE are set against that pod.
 func (s *GenericAPIServer) Eventf(eventType, reason, messageFmt string, args ...interface{}) {
 	t := metav1.Time{Time: time.Now()}
-	host, _ := os.Hostname() // expicitly ignore error. Empty host is fine
 
 	ref := *s.eventRef
 	if len(ref.Namespace) == 0 {
@@ -655,11 +654,11 @@ func (s *GenericAPIServer) Eventf(eventType, reason, messageFmt string, args ...
 			Name:      fmt.Sprintf("%v.%x", ref.Name, t.UnixNano()),
 			Namespace: ref.Namespace,
 		},
+		EventTime:      metav1.NowMicro(),
 		InvolvedObject: ref,
 		Reason:         reason,
 		Message:        fmt.Sprintf(messageFmt, args...),
 		Type:           eventType,
-		Source:         corev1.EventSource{Component: "apiserver", Host: host},
 	}
 
 	klog.V(2).Infof("Event(%#v): type: '%v' reason: '%v' %v", e.InvolvedObject, e.Type, e.Reason, e.Message)
