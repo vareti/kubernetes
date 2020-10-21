@@ -30,13 +30,15 @@ import (
 	restful "github.com/emicklei/go-restful"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/validation"
 	"k8s.io/apimachinery/pkg/types"
+	utilnet "k8s.io/apimachinery/pkg/util/net"
 	utilsets "k8s.io/apimachinery/pkg/util/sets"
+	compbasemetrics "k8s.io/component-base/metrics"
+	"k8s.io/component-base/metrics/legacyregistry"
+
 	"k8s.io/apiserver/pkg/audit"
 	"k8s.io/apiserver/pkg/endpoints/request"
 	"k8s.io/apiserver/pkg/features"
 	utilfeature "k8s.io/apiserver/pkg/util/feature"
-	compbasemetrics "k8s.io/component-base/metrics"
-	"k8s.io/component-base/metrics/legacyregistry"
 )
 
 // resettableCollector is the interface implemented by prometheus.MetricVec
@@ -67,7 +69,7 @@ var (
 			Help:           "Gauge of deprecated APIs that have been requested, broken out by API group, version, resource, subresource, and removed_release.",
 			StabilityLevel: compbasemetrics.ALPHA,
 		},
-		[]string{"group", "version", "resource", "subresource", "removed_release"},
+		[]string{"group", "version", "resource", "subresource", "removed_release", "client"},
 	)
 
 	// TODO(a-robinson): Add unit tests for the handling of these metrics once
@@ -349,7 +351,7 @@ func MonitorRequest(req *http.Request, verb, group, version, resource, subresour
 	cleanContentType := cleanContentType(contentType)
 	requestCounter.WithLabelValues(reportedVerb, dryRun, group, version, resource, subresource, scope, component, cleanContentType, codeToString(httpCode)).Inc()
 	if deprecated {
-		deprecatedRequestGauge.WithLabelValues(group, version, resource, subresource, removedRelease).Set(1)
+		deprecatedRequestGauge.WithLabelValues(group, version, resource, subresource, removedRelease, cleanUserAgent(utilnet.GetHTTPClient(req))).Set(1)
 		audit.AddAuditAnnotation(req.Context(), deprecatedAnnotationKey, "true")
 		if len(removedRelease) > 0 {
 			audit.AddAuditAnnotation(req.Context(), removedReleaseAnnotationKey, removedRelease)
@@ -492,6 +494,19 @@ func cleanDryRun(u *url.URL) string {
 	// TODO: this is a fairly large allocation for what it does, consider
 	//   a sort and dedup in a single pass
 	return strings.Join(utilsets.NewString(dryRun...).List(), ",")
+}
+
+func cleanUserAgent(ua string) string {
+	// We collapse all "web browser"-type user agents into one "browser" to reduce metric cardinality.
+	if strings.HasPrefix(ua, "Mozilla/") {
+		return "Browser"
+	}
+	// If an old "kubectl.exe" has passed us its full path, we discard the path portion.
+	if kubectlExeRegexp.MatchString(ua) {
+		// avoid an allocation
+		ua = kubectlExeRegexp.ReplaceAllString(ua, "$1")
+	}
+	return ua
 }
 
 // ResponseWriterDelegator interface wraps http.ResponseWriter to additionally record content-length, status-code, etc.
