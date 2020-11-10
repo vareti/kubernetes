@@ -351,7 +351,7 @@ func MonitorRequest(req *http.Request, verb, group, version, resource, subresour
 	cleanContentType := cleanContentType(contentType)
 	requestCounter.WithLabelValues(reportedVerb, dryRun, group, version, resource, subresource, scope, component, cleanContentType, codeToString(httpCode)).Inc()
 	if deprecated {
-		deprecatedRequestGauge.WithLabelValues(group, version, resource, subresource, removedRelease, cleanUserAgent(utilnet.GetHTTPClient(req))).Set(1)
+		deprecatedRequestGauge.WithLabelValues(group, version, resource, subresource, removedRelease, cleanUserAgent(utilnet.GetHTTPClient(req))).Add(1.0)
 		audit.AddAuditAnnotation(req.Context(), deprecatedAnnotationKey, "true")
 		if len(removedRelease) > 0 {
 			audit.AddAuditAnnotation(req.Context(), removedReleaseAnnotationKey, removedRelease)
